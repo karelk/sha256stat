@@ -1,4 +1,3 @@
-// gcc -o sha256stat sha256stat.c -lcrypto -lpthread
 #include <stdio.h>
 #include <getopt.h>
 #include <unistd.h>
@@ -100,7 +99,6 @@ void *sha256stat(void *filename) {
                 return NULL;
         }
 
-	/* updates by anwar start*/
         EVP_MD_CTX *hashctx;             
 		hashctx = EVP_MD_CTX_new();
 		if (hashctx == NULL)
@@ -108,7 +106,6 @@ void *sha256stat(void *filename) {
 			printf("\nError - EVP_MD_CTX \n");
 			return NULL;
 		}
-//      const EVP_MD *hashptr = EVP_get_digestbyname("SHA1");
         const EVP_MD *hashptr = EVP_get_digestbyname("SHA256");
         EVP_MD_CTX_init(hashctx);
         EVP_DigestInit_ex(hashctx, hashptr, NULL);
@@ -120,11 +117,9 @@ void *sha256stat(void *filename) {
 
         unsigned int outlen;
         EVP_DigestFinal_ex(hashctx, buffer, &outlen);
-        //EVP_MD_CTX_cleanup(hashctx); // removed in latest build.  updated by anwar
 	EVP_MD_CTX_reset(hashctx);       
 		EVP_MD_CTX_free(hashctx); 
 		hashctx = NULL;           
-       /* updated by anwar  end */
 
         pthread_mutex_lock(&output_mutex);
         int i;
@@ -308,7 +303,6 @@ int main(int argc, char **argv) {
     int l_nActualArgCount = 0;
 
     OpenSSL_add_all_algorithms();
-//  ERR_load_crypto_strings();
 
     if (isatty(STDIN_FILENO)) {
         while ((c = getopt(argc, argv, "c")) != EOF) switch(c) {
