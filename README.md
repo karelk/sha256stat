@@ -29,3 +29,8 @@ find ~/.config/chromium/Default/ -mmin -5 -name '* *' -print0 | sha256stat -c -0
 e728d53aae2b9c8287decae559c5986bb5c8d4fb5b725b380fe7749cfc15cd8b -rw------- 1 karel karel 15,138 /home/karel/.config/chromium/Default/Current Session
 d4f2ce601dcc2fb10a93ea0a6bb330f2936f21f571db33f5a4039aa6c402b926 -rw------- 1 karel karel  5,516 /home/karel/.config/chromium/Default/Current Tabs
 ```
+
+to monitor changed config files on a system, add something like the following to crontab:
+```
+find /etc -type f | sha256stat > "/var/log/sha256sums/$(date +%F).shastat"
+```
