@@ -6,11 +6,13 @@ List file information including sha256 checksum. Basically combines `ls -l` and 
 
 '''
 sha256stat /boot/vmlinuz
+
 536638847c584b5f740120bc6e53520aa80f2d5b38b3036a3087d590a4257852 -rw------- 1 root root 6,867,184 2022-01-24 11:06 /boot/vmlinuz
 ```
 
 ```
 find /boot/ -type f | sha256stat
+
 6fe0fa2c336cb45b3b713073059e97fbf4cd3c692bce79e7d2d6bd46863c285d -rw------- 1 root root   118,618 2022-01-24 11:06 /boot/config
 536638847c584b5f740120bc6e53520aa80f2d5b38b3036a3087d590a4257852 -rw------- 1 root root 6,867,184 2022-01-24 11:06 /boot/vmlinuz
 b7a0260762d47d79a86da238f84f5bacc92975591bccde3a2abeb6e5b0ab6d37 -rw------- 1 root root 9,455,675 2022-01-24 11:06 /boot/System.map
