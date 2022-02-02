@@ -4,7 +4,7 @@ List file information including sha256 checksum. Basically combines `ls -l` and 
 
 **Usage:**
 
-'''
+```
 sha256stat /boot/vmlinuz
 
 536638847c584b5f740120bc6e53520aa80f2d5b38b3036a3087d590a4257852 -rw------- 1 root root 6,867,184 2022-01-24 11:06 /boot/vmlinuz
